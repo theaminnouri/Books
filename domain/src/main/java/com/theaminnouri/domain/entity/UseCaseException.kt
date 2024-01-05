@@ -2,7 +2,8 @@ package com.theaminnouri.domain.entity
 
 sealed class UseCaseException(case: Throwable) : Throwable(case) {
 
-    class UserException(cause: Throwable) : UseCaseException(cause)
+    class BooksException(cause: Throwable) : UseCaseException(cause)
+    class BookException(cause: Throwable) : UseCaseException(cause)
 
     companion object {
 

@@ -27,15 +27,18 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
+        sourceCompatibility = JavaVersion.VERSION_11
+        targetCompatibility = JavaVersion.VERSION_11
     }
     kotlinOptions {
-        jvmTarget = "1.8"
+        jvmTarget = JavaVersion.VERSION_11.toString()
     }
     // Allow references to generated code
     kapt {
         correctErrorTypes = true
+    }
+    tasks.withType<Test> {
+        useJUnitPlatform()
     }
 }
 
@@ -51,7 +54,10 @@ dependencies {
     implementation(libs.moshi)
     implementation(libs.moshi.kotlin)
 
-    testImplementation(libs.junit)
+    testImplementation(libs.junitPlatformLauncher)
+    testImplementation(libs.junitJupiterEngine)
+    testImplementation(libs.junitVintageEngine)
+    testImplementation(libs.mockitoKotlin)
 
     androidTestImplementation(libs.androidx.test.ext.junit)
     androidTestImplementation(libs.espresso.core)
