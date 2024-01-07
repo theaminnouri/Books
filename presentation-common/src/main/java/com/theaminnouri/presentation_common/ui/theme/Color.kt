@@ -1,4 +1,4 @@
-package com.theaminnouri.books.ui.theme
+package com.theaminnouri.presentation_common.ui.theme
 
 import androidx.compose.ui.graphics.Color
 

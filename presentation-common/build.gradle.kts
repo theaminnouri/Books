@@ -1,24 +1,18 @@
 @Suppress("DSL_SCOPE_VIOLATION") // TODO: Remove once KTIJ-19369 is fixed
 plugins {
-    alias(libs.plugins.androidApplication)
+    alias(libs.plugins.androidLibrary)
     alias(libs.plugins.kotlinAndroid)
 }
 
 android {
-    namespace = "com.theaminnouri.books"
+    namespace = "com.theaminnouri.presentation_common"
     compileSdk = 34
 
     defaultConfig {
-        applicationId = "com.theaminnouri.books"
         minSdk = 26
-        targetSdk = 34
-        versionCode = 1
-        versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
-        vectorDrawables {
-            useSupportLibrary = true
-        }
+        consumerProguardFiles("consumer-rules.pro")
     }
 
     buildTypes {
@@ -43,27 +37,17 @@ android {
     composeOptions {
         kotlinCompilerExtensionVersion = libs.versions.kotlinCompilerExtensionVersion.get()
     }
-    packaging {
-        resources {
-            excludes += "/META-INF/{AL2.0,LGPL2.1}"
-        }
-    }
 }
 
 dependencies {
-    implementation(project(":presentation-common"))
-    implementation(project(":presentation-search"))
-    implementation(libs.core.ktx)
-    implementation(libs.lifecycle.runtime.ktx)
-    implementation(libs.activity.compose)
-    implementation(platform(libs.compose.bom))
-    implementation(libs.composeUi)
-    implementation(libs.composeUiGraphics)
-    implementation(libs.composeUiToolingPreview)
-    implementation(libs.material3)
-    implementation(libs.navigationFragment)
-    implementation(libs.navigationUi)
-    implementation(libs.navigationCompose)
+    api(libs.core.ktx)
+    api(libs.appcompat)
+    api(libs.material)
+    api(libs.material3)
+    api(platform(libs.compose.bom))
+    api(libs.composeUi)
+    api(libs.composeUiGraphics)
+    api(libs.composeUiToolingPreview)
 
     testImplementation(libs.junit)
 
