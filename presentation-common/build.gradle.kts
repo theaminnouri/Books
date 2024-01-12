@@ -2,16 +2,18 @@
 plugins {
     alias(libs.plugins.androidLibrary)
     alias(libs.plugins.kotlinAndroid)
-    id(libs.plugins.kotlinKapt.get().pluginId)
+    alias(libs.plugins.ksp)
     alias(libs.plugins.hilt)
 }
-
+kotlin {
+    jvmToolchain(libs.versions.jdkVersion.get().toInt())
+}
 android {
     namespace = "com.theaminnouri.presentation_common"
-    compileSdk = 34
+    compileSdk = libs.versions.compileSdk.get().toInt()
 
     defaultConfig {
-        minSdk = 26
+        minSdk = libs.versions.minSdk.get().toInt()
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles("consumer-rules.pro")
@@ -21,18 +23,11 @@ android {
         release {
             isMinifyEnabled = false
             proguardFiles(
-                getDefaultProguardFile("proguard-android-optimize.txt"),
-                "proguard-rules.pro"
+                getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro"
             )
         }
     }
-    compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_11
-        targetCompatibility = JavaVersion.VERSION_11
-    }
-    kotlinOptions {
-        jvmTarget = JavaVersion.VERSION_11.toString()
-    }
+
     buildFeatures {
         compose = true
     }
@@ -58,7 +53,7 @@ dependencies {
     api(libs.navigationFragment)
     api(libs.navigationUi)
     api(libs.hiltAndroid)
-    kapt(libs.hiltAndroidCompiler)
+    ksp(libs.hiltAndroidCompiler)
     api(libs.hiltNavigationCompose)
 
     testImplementation(libs.junit)

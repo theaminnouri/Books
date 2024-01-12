@@ -2,17 +2,19 @@
 plugins {
     alias(libs.plugins.androidApplication)
     alias(libs.plugins.kotlinAndroid)
-    id(libs.plugins.kotlinKapt.get().pluginId)
+    alias(libs.plugins.ksp)
     alias(libs.plugins.hilt)
 }
-
+kotlin {
+    jvmToolchain(libs.versions.jdkVersion.get().toInt())
+}
 android {
     namespace = "com.theaminnouri.books"
-    compileSdk = 34
+    compileSdk = libs.versions.compileSdk.get().toInt()
 
     defaultConfig {
         applicationId = "com.theaminnouri.books"
-        minSdk = 26
+        minSdk = libs.versions.minSdk.get().toInt()
         targetSdk = 34
         versionCode = 1
         versionName = "1.0"
@@ -27,18 +29,11 @@ android {
         release {
             isMinifyEnabled = false
             proguardFiles(
-                getDefaultProguardFile("proguard-android-optimize.txt"),
-                "proguard-rules.pro"
+                getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro"
             )
         }
     }
-    compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_11
-        targetCompatibility = JavaVersion.VERSION_11
-    }
-    kotlinOptions {
-        jvmTarget = JavaVersion.VERSION_11.toString()
-    }
+
     buildFeatures {
         compose = true
     }
@@ -72,7 +67,7 @@ dependencies {
     implementation(libs.navigationUi)
     implementation(libs.navigationCompose)
     implementation(libs.hiltAndroid)
-    kapt(libs.hiltAndroidCompiler)
+    ksp(libs.hiltAndroidCompiler)
     implementation(libs.hiltNavigationCompose)
 
     testImplementation(libs.junit)

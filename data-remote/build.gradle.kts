@@ -2,16 +2,18 @@
 plugins {
     alias(libs.plugins.androidLibrary)
     alias(libs.plugins.kotlinAndroid)
-    id(libs.plugins.kotlinKapt.get().pluginId)
+    alias(libs.plugins.ksp)
     alias(libs.plugins.hilt)
 }
-
+kotlin {
+    jvmToolchain(libs.versions.jdkVersion.get().toInt())
+}
 android {
     namespace = "com.theaminnouri.data_remote"
-    compileSdk = 34
+    compileSdk = libs.versions.compileSdk.get().toInt()
 
     defaultConfig {
-        minSdk = 26
+        minSdk = libs.versions.minSdk.get().toInt()
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles("consumer-rules.pro")
@@ -21,22 +23,11 @@ android {
         release {
             isMinifyEnabled = false
             proguardFiles(
-                getDefaultProguardFile("proguard-android-optimize.txt"),
-                "proguard-rules.pro"
+                getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro"
             )
         }
     }
-    compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_11
-        targetCompatibility = JavaVersion.VERSION_11
-    }
-    kotlinOptions {
-        jvmTarget = JavaVersion.VERSION_11.toString()
-    }
-    // Allow references to generated code
-    kapt {
-        correctErrorTypes = true
-    }
+
     tasks.withType<Test> {
         useJUnitPlatform()
     }
@@ -46,7 +37,7 @@ dependencies {
     implementation(project(":domain"))
     implementation(project(":data-repository"))
     implementation(libs.hiltAndroid)
-    kapt(libs.hiltAndroidCompiler)
+    ksp(libs.hiltAndroidCompiler)
     implementation(libs.core.ktx)
     api(libs.okhttp)
     api(libs.okhttpLoggingInterceptor)
