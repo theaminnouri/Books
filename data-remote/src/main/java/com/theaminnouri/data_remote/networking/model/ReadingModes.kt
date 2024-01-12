@@ -1,9 +1,9 @@
 package com.theaminnouri.data_remote.networking.model
 
-import com.squareup.moshi.Json
+import com.google.gson.annotations.SerializedName
 
 
 data class ReadingModes(
-    @Json(name = "text") var text: Boolean? = null,
-    @Json(name = "image") var image: Boolean? = null
+    @SerializedName("text") var text: Boolean? = null,
+    @SerializedName("image") var image: Boolean? = null
 )

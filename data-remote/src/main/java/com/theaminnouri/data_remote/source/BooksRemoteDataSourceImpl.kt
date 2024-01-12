@@ -10,8 +10,9 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.map
+import javax.inject.Inject
 
-data class BooksRemoteDataSourceImpl(val volumesApiService: VolumesApiService) :
+data class BooksRemoteDataSourceImpl @Inject constructor(val volumesApiService: VolumesApiService) :
     BooksRemoteDataSource {
     override fun getBooks(query: String): Flow<List<Book>> = flow {
         emit(volumesApiService.getVolumes(query = query))

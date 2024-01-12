@@ -2,6 +2,8 @@
 plugins {
     alias(libs.plugins.androidLibrary)
     alias(libs.plugins.kotlinAndroid)
+    id(libs.plugins.kotlinKapt.get().pluginId)
+    alias(libs.plugins.hilt)
 }
 
 android {
@@ -40,14 +42,24 @@ android {
 }
 
 dependencies {
+    api(project(":domain"))
     api(libs.core.ktx)
     api(libs.appcompat)
+    api(libs.lifecycleViewModelKtx)
+    api(libs.lifecycleViewModelCompose)
+    api(libs.lifecycleRuntimeKtx)
     api(libs.material)
     api(libs.material3)
     api(platform(libs.compose.bom))
     api(libs.composeUi)
     api(libs.composeUiGraphics)
     api(libs.composeUiToolingPreview)
+    api(libs.navigationCompose)
+    api(libs.navigationFragment)
+    api(libs.navigationUi)
+    api(libs.hiltAndroid)
+    kapt(libs.hiltAndroidCompiler)
+    api(libs.hiltNavigationCompose)
 
     testImplementation(libs.junit)
 

@@ -1,8 +1,8 @@
 package com.theaminnouri.data_remote.networking.model
 
-import com.squareup.moshi.Json
+import com.google.gson.annotations.SerializedName
 
 
 data class Epub(
-    @Json(name = "isAvailable") var isAvailable: Boolean? = null
+    @SerializedName("isAvailable") var isAvailable: Boolean? = null
 )

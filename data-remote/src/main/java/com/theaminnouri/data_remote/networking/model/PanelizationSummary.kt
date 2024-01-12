@@ -1,9 +1,9 @@
 package com.theaminnouri.data_remote.networking.model
 
-import com.squareup.moshi.Json
+import com.google.gson.annotations.SerializedName
 
 
 data class PanelizationSummary(
-    @Json(name = "containsEpubBubbles") var containsEpubBubbles: Boolean? = null,
-    @Json(name = "containsImageBubbles") var containsImageBubbles: Boolean? = null
+    @SerializedName("containsEpubBubbles") var containsEpubBubbles: Boolean? = null,
+    @SerializedName("containsImageBubbles") var containsImageBubbles: Boolean? = null
 )

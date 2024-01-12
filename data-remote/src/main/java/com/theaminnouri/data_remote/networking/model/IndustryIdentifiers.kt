@@ -1,9 +1,9 @@
 package com.theaminnouri.data_remote.networking.model
 
-import com.squareup.moshi.Json
+import com.google.gson.annotations.SerializedName
 
 
 data class IndustryIdentifiers(
-    @Json(name = "type") var type: String? = null,
-    @Json(name = "identifier") var identifier: String? = null
+    @SerializedName("type") var type: String? = null,
+    @SerializedName("identifier") var identifier: String? = null
 )

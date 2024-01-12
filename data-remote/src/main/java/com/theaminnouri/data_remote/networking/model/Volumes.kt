@@ -1,7 +1,10 @@
 package com.theaminnouri.data_remote.networking.model
 
+import com.google.gson.annotations.SerializedName
+
+
 data class Volumes(
-    val kind: String? = null,
-    val totalItems: Long? = null,
-    val items: ArrayList<Volume> = arrayListOf(),
+    @SerializedName("kind") val kind: String? = null,
+    @SerializedName("totalItems") val totalItems: Int? = null,
+    @SerializedName("items") val items: List<Volume> = arrayListOf(),
 )

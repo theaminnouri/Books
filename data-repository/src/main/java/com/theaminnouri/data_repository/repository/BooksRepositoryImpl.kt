@@ -4,8 +4,10 @@ import com.theaminnouri.data_repository.data_source.remote.BooksRemoteDataSource
 import com.theaminnouri.domain.entity.Book
 import com.theaminnouri.domain.repository.BooksRepository
 import kotlinx.coroutines.flow.Flow
+import javax.inject.Inject
 
-data class BooksRepositoryImpl(val remoteDataSource: BooksRemoteDataSource) : BooksRepository {
+data class BooksRepositoryImpl @Inject constructor(val remoteDataSource: BooksRemoteDataSource) :
+    BooksRepository {
     override fun getBooks(query: String): Flow<List<Book>> =
         remoteDataSource.getBooks(query = query)
 

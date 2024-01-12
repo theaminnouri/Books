@@ -1,29 +1,29 @@
 package com.theaminnouri.data_remote.networking.model
 
-import com.squareup.moshi.Json
+import com.google.gson.annotations.SerializedName
 
 
 data class VolumeInfo(
-    @Json(name = "title") var title: String? = null,
-    @Json(name = "subtitle") var subtitle: String? = null,
-    @Json(name = "authors") var authors: ArrayList<String> = arrayListOf(),
-    @Json(name = "publisher") var publisher: String? = null,
-    @Json(name = "publishedDate") var publishedDate: String? = null,
-    @Json(name = "description") var description: String? = null,
-    @Json(name = "industryIdentifiers") var industryIdentifiers: ArrayList<IndustryIdentifiers> = arrayListOf(),
-    @Json(name = "readingModes") var readingModes: ReadingModes? = ReadingModes(),
-    @Json(name = "pageCount") var pageCount: Int? = null,
-    @Json(name = "printedPageCount") var printedPageCount: Int? = null,
-    @Json(name = "printType") var printType: String? = null,
-    @Json(name = "categories") var categories: ArrayList<String> = arrayListOf(),
-    @Json(name = "maturityRating") var maturityRating: String? = null,
-    @Json(name = "allowAnonLogging") var allowAnonLogging: Boolean? = null,
-    @Json(name = "contentVersion") var contentVersion: String? = null,
-    @Json(name = "panelizationSummary") var panelizationSummary: PanelizationSummary? = PanelizationSummary(),
-    @Json(name = "imageLinks") var imageLinks: ImageLinks? = ImageLinks(),
-    @Json(name = "language") var language: String? = null,
-    @Json(name = "previewLink") var previewLink: String? = null,
-    @Json(name = "infoLink") var infoLink: String? = null,
-    @Json(name = "canonicalVolumeLink") var canonicalVolumeLink: String? = null
+    @SerializedName("title") var title: String? = null,
+    @SerializedName("subtitle") var subtitle: String? = null,
+    @SerializedName("authors") var authors: ArrayList<String> = arrayListOf(),
+    @SerializedName("publisher") var publisher: String? = null,
+    @SerializedName("publishedDate") var publishedDate: String? = null,
+    @SerializedName("description") var description: String? = null,
+    @SerializedName("industryIdentifiers") var industryIdentifiers: ArrayList<IndustryIdentifiers> = arrayListOf(),
+    @SerializedName("readingModes") var readingModes: ReadingModes? = ReadingModes(),
+    @SerializedName("pageCount") var pageCount: Int? = null,
+    @SerializedName("printedPageCount") var printedPageCount: Int? = null,
+    @SerializedName("printType") var printType: String? = null,
+    @SerializedName("categories") var categories: ArrayList<String> = arrayListOf(),
+    @SerializedName("maturityRating") var maturityRating: String? = null,
+    @SerializedName("allowAnonLogging") var allowAnonLogging: Boolean? = null,
+    @SerializedName("contentVersion") var contentVersion: String? = null,
+    @SerializedName("panelizationSummary") var panelizationSummary: PanelizationSummary? = PanelizationSummary(),
+    @SerializedName("imageLinks") var imageLinks: ImageLinks? = ImageLinks(),
+    @SerializedName("language") var language: String? = null,
+    @SerializedName("previewLink") var previewLink: String? = null,
+    @SerializedName("infoLink") var infoLink: String? = null,
+    @SerializedName("canonicalVolumeLink") var canonicalVolumeLink: String? = null
 
 )

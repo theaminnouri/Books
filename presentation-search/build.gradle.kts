@@ -2,6 +2,8 @@
 plugins {
     alias(libs.plugins.androidLibrary)
     alias(libs.plugins.kotlinAndroid)
+    id(libs.plugins.kotlinKapt.get().pluginId)
+    alias(libs.plugins.hilt)
 }
 
 android {
@@ -41,6 +43,11 @@ android {
 
 dependencies {
     implementation(project(":presentation-common"))
+    implementation(project(":domain"))
+
+    implementation(libs.hiltAndroid)
+    kapt(libs.hiltAndroidCompiler)
+    implementation(libs.hiltNavigationCompose)
 
     testImplementation(libs.junit)
 

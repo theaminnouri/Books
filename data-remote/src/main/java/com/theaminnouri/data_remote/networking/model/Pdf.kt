@@ -1,9 +1,9 @@
 package com.theaminnouri.data_remote.networking.model
 
-import com.squareup.moshi.Json
+import com.google.gson.annotations.SerializedName
 
 
 data class Pdf(
-    @Json(name = "isAvailable") var isAvailable: Boolean? = null,
-    @Json(name = "acsTokenLink") var acsTokenLink: String? = null
+    @SerializedName("isAvailable") var isAvailable: Boolean? = null,
+    @SerializedName("acsTokenLink") var acsTokenLink: String? = null
 )

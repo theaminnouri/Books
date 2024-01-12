@@ -1,17 +1,17 @@
 package com.theaminnouri.data_remote.networking.model
 
-import com.squareup.moshi.Json
+import com.google.gson.annotations.SerializedName
 
 
-data class AccessInfo (
-  @Json(name = "country"                ) var country                : String?  = null,
-  @Json(name = "viewability"            ) var viewability            : String?  = null,
-  @Json(name = "embeddable"             ) var embeddable             : Boolean? = null,
-  @Json(name = "publicDomain"           ) var publicDomain           : Boolean? = null,
-  @Json(name = "textToSpeechPermission" ) var textToSpeechPermission : String?  = null,
-  @Json(name = "epub"                   ) var epub                   : Epub?    = Epub(),
-  @Json(name = "pdf"                    ) var pdf                    : Pdf?     = Pdf(),
-  @Json(name = "webReaderLink"          ) var webReaderLink          : String?  = null,
-  @Json(name = "accessViewStatus"       ) var accessViewStatus       : String?  = null,
-  @Json(name = "quoteSharingAllowed"    ) var quoteSharingAllowed    : Boolean? = null
+data class AccessInfo(
+    @SerializedName("country") var country: String? = null,
+    @SerializedName("viewability") var viewability: String? = null,
+    @SerializedName("embeddable") var embeddable: Boolean? = null,
+    @SerializedName("publicDomain") var publicDomain: Boolean? = null,
+    @SerializedName("textToSpeechPermission") var textToSpeechPermission: String? = null,
+    @SerializedName("epub") var epub: Epub? = Epub(),
+    @SerializedName("pdf") var pdf: Pdf? = Pdf(),
+    @SerializedName("webReaderLink") var webReaderLink: String? = null,
+    @SerializedName("accessViewStatus") var accessViewStatus: String? = null,
+    @SerializedName("quoteSharingAllowed") var quoteSharingAllowed: Boolean? = null
 )

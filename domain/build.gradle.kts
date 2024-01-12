@@ -2,6 +2,8 @@
 plugins {
     alias(libs.plugins.androidLibrary)
     alias(libs.plugins.kotlinAndroid)
+    id(libs.plugins.kotlinKapt.get().pluginId)
+    alias(libs.plugins.hilt)
 }
 
 android {
@@ -38,6 +40,10 @@ dependencies {
     implementation(libs.core.ktx)
     implementation(libs.appcompat)
     implementation(libs.material)
+    implementation(libs.hiltAndroid)
+    kapt(libs.hiltAndroidCompiler)
+    implementation(libs.hiltNavigationCompose)
+
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.test.ext.junit)
     androidTestImplementation(libs.espresso.core)

@@ -1,14 +1,14 @@
 package com.theaminnouri.data_remote.networking.model
 
-import com.squareup.moshi.Json
+import com.google.gson.annotations.SerializedName
 
 
 data class Volume(
-    @Json(name = "kind") var kind: String? = null,
-    @Json(name = "id") var id: String? = null,
-    @Json(name = "etag") var etag: String? = null,
-    @Json(name = "selfLink") var selfLink: String? = null,
-    @Json(name = "volumeInfo") var volumeInfo: VolumeInfo? = VolumeInfo(),
-    @Json(name = "saleInfo") var saleInfo: SaleInfo? = SaleInfo(),
-    @Json(name = "accessInfo") var accessInfo: AccessInfo? = AccessInfo()
+    @SerializedName("kind") var kind: String? = null,
+    @SerializedName("id") var id: String? = null,
+    @SerializedName("etag") var etag: String? = null,
+    @SerializedName("selfLink") var selfLink: String? = null,
+    @SerializedName("volumeInfo") var volumeInfo: VolumeInfo? = VolumeInfo(),
+    @SerializedName("saleInfo") var saleInfo: SaleInfo? = SaleInfo(),
+    @SerializedName("accessInfo") var accessInfo: AccessInfo? = AccessInfo()
 )

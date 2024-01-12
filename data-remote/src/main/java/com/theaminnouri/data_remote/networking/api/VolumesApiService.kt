@@ -8,9 +8,9 @@ import retrofit2.http.Query
 
 interface VolumesApiService {
 
-    @GET("/v1/volumes")
+    @GET("v1/volumes")
     suspend fun getVolumes(@Query("q") query: String): Volumes
 
-    @GET("/v1/volumes/{id}")
+    @GET("v1/volumes/{id}")
     suspend fun getVolume(@Path("id") id: String): Volume
 }

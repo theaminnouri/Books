@@ -2,6 +2,8 @@
 plugins {
     alias(libs.plugins.androidApplication)
     alias(libs.plugins.kotlinAndroid)
+    id(libs.plugins.kotlinKapt.get().pluginId)
+    alias(libs.plugins.hilt)
 }
 
 android {
@@ -48,13 +50,18 @@ android {
             excludes += "/META-INF/{AL2.0,LGPL2.1}"
         }
     }
+    hilt {
+        enableAggregatingTask = false
+    }
 }
 
 dependencies {
     implementation(project(":presentation-common"))
     implementation(project(":presentation-search"))
+    implementation(project(":data-repository"))
+    implementation(project(":data-remote"))
     implementation(libs.core.ktx)
-    implementation(libs.lifecycle.runtime.ktx)
+    implementation(libs.lifecycleRuntimeKtx)
     implementation(libs.activity.compose)
     implementation(platform(libs.compose.bom))
     implementation(libs.composeUi)
@@ -64,6 +71,9 @@ dependencies {
     implementation(libs.navigationFragment)
     implementation(libs.navigationUi)
     implementation(libs.navigationCompose)
+    implementation(libs.hiltAndroid)
+    kapt(libs.hiltAndroidCompiler)
+    implementation(libs.hiltNavigationCompose)
 
     testImplementation(libs.junit)
 
